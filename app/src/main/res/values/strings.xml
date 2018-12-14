@@ -27,4 +27,38 @@
 
     <!-- Subtitle text for the empty view that prompts the user to add an inventory [CHAR LIMIT=50] -->
     <string name="empty_view_subtitle_text">Get started by adding a product</string>
+
+    <string name="title">Title</string>
+    <string name="name_of_the_product">Name of the product?</string>
+    <string name="price">Price</string>
+    <string name="price_of_the_product">Price of the product?</string>
+    <string name="quantity">Quantity</string>
+    <string name="quantity_of_the_product">Quantity of the product?</string>
+    <string name="sold">Sold</string>
+    <string name="product_sold">Product sold?</string>
+    <string name="name">Name</string>
+    <string name="name_of_the_supplier">Name of the supplier?</string>
+    <string name="email">Email</string>
+    <string name="email_of_the_supplier">Email of the supplier?</string>
+    <string name="mobile">Mobile</string>
+    <string name="mobile_no_of_supplier">Mobile no. of supplier?</string>
+
+    <string name="cd_product_image">Product image</string>
+
+    <string name="delete" translatable="false">Delete</string>
+    <string name="save">Save</string>
+    <string name="dial">Dial</string>
+    <string name="description">Description</string>
+    <string name="add_new_product">Add New Product</string>
+    <string name="edit_product_info">Edit Product Info</string>
+
+    <string name="unsaved_changes_dialog_msg">You have unsave information are you sure you want to go back?</string>
+    <string name="discard">Discard and leave</string>
+    <string name="keep_editing">Lets finish this</string>
+
+    <!-- Dialog message to ask the user to confirm deleting the current pet [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this pet?</string>
+
+    <!-- Dialog button text for the option to cancel deletion of the current pet [CHAR LIMIT=20] -->
+    <string name="cancel">Cancel</string>
 </resources>

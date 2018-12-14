@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bishram.nano.degree.inventory.app2.R;
 
@@ -103,8 +104,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
                     );
                     context.getContentResolver().notifyChange(currentUri, null);
                 } else {
-                    buttonSellProduct.setVisibility(View.INVISIBLE);
-                    quantityTextView.setText("Out of stock.");
+                    Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
+                    buttonSellProduct.setEnabled(false);
                 }
             }
         });

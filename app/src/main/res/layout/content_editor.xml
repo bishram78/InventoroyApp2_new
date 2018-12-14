@@ -3,226 +3,226 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bkg_round_corner"
-    android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/padding_16">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Title"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/title"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/product_name_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Name of the product?"/>
+            android:hint="@string/name_of_the_product"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Price"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/price"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/product_price_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Price of the product?"/>
+            android:hint="@string/price_of_the_product"
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Quantity"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/quantity"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/product_quantity_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Quantity of the product?"/>
+            android:hint="@string/quantity_of_the_product"
+            android:inputType="numberSigned" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="0.3"
-            android:layout_height="wrap_content"
-            android:text="Sold"
-            android:textColor="@android:color/white"/>
-
-        <ImageView
-            android:id="@+id/product_sold_inc_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@drawable/bkg_round_all"
-            android:src="@drawable/ic_action_left"/>
-
-        <EditText
-            android:id="@+id/product_sold_et"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
-            android:background="@android:color/transparent"
-            android:hint="Product sold?"/>
+            android:text="@string/sold"
+            android:textColor="@android:color/white" />
 
         <ImageView
             android:id="@+id/product_sold_dec_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
             android:background="@drawable/bkg_round_all"
-            android:src="@drawable/ic_action_right"/>
+            android:padding="@dimen/padding_4"
+            android:src="@drawable/ic_action_left" />
+
+        <EditText
+            android:id="@+id/product_sold_et"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:hint="@string/product_sold"
+            android:inputType="numberSigned" />
+
+        <ImageView
+            android:id="@+id/product_sold_inc_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bkg_round_all"
+            android:padding="@dimen/padding_4"
+            android:src="@drawable/ic_action_right" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Name"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/name"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/supplier_name_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Name of the supplier?"/>
+            android:hint="@string/name_of_the_supplier"
+            android:inputType="textPersonName" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/email"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/supplier_email_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Email of the supplier?"/>
+            android:hint="@string/email_of_the_supplier"
+            android:inputType="textEmailAddress" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/white"/>
+        android:layout_marginTop="@dimen/margin_8"
+        android:background="@android:color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8"
         android:gravity="center"
-        android:layout_marginTop="8dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="wrap_content"
-            android:text="Mobile"
-            android:textColor="@android:color/white"/>
+            android:layout_weight="0.3"
+            android:text="@string/mobile"
+            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/supplier_mobile_et"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
+            android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:hint="Mobile no. of supplier?"/>
+            android:hint="@string/mobile_no_of_supplier"
+            android:inputType="phone" />
     </LinearLayout>
 </LinearLayout>

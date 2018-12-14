@@ -1,13 +1,17 @@
 package com.bishram.nano.degree.inventory.app2.activity;
 
+import android.annotation.SuppressLint;
 import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,6 +47,14 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
         setTitle(getString(R.string.main_activity_title));
 
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, EditorActivity.class));
+            }
+        });
+
         // Find a ListView which will be populated with the inventory data
         ListView listView = findViewById(R.id.list);
 
@@ -64,10 +76,11 @@ public class MainActivity extends AppCompatActivity implements
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Random random = new Random();
-                double productPriceDouble = random.nextInt(50000 - 1000)/10.0;
-                String productPriceStr = String.format("%.2f", productPriceDouble);
-                Toast.makeText(getApplicationContext(), productPriceStr, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, EditorActivity.class);
+
+                Uri currentUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
+                intent.setData(currentUri);
+                startActivity(intent);
             }
         });
 
@@ -153,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements
         Random random = new Random();
         String productName = "Product_" + random.nextInt(5000 - 1000);
         double productPriceDouble = random.nextInt(50000 - 1000)/10.0;
-        String productPriceStr = String.format("%.2f", productPriceDouble);
+        @SuppressLint("DefaultLocale") String productPriceStr = String.format("%.2f", productPriceDouble);
         int productQuantity = random.nextInt(50 - 1);
         int productSold = random.nextInt(10 - 1);
         String supplierName = "Supplier_" + random.nextInt(100 - 1);

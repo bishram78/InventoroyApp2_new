@@ -291,22 +291,16 @@ public class InventoryProvider extends ContentProvider {
     private Uri insertInventory(Uri uri, ContentValues values) {
 
         // Check that the name of product is not null.
-//        String nameProduct = values.getAsString(InventoryEntry.COLUMN_NAME_PRODUCT);
-//        if (nameProduct == null) {
-//            throw new IllegalArgumentException("Product requires a name.");
-//        }
-//
-//        // Check that the name of supplier is not null.
-//        String nameSupplier = values.getAsString(InventoryEntry.COLUMN_NAME_SUPPLIER);
-//        if (nameSupplier == null) {
-//            throw new IllegalArgumentException("Supplier name can not be empty.");
-//        }
-//
-//        // Check that mobile number is valid
-//        long mobileNumber = values.getAsLong(InventoryEntry.COLUMN_MOBILE_SUPPLIER);
-//        if (mobileNumber != 10) {
-//            throw new IllegalArgumentException("Mobile number is not valid");
-//        }
+        String nameProduct = values.getAsString(InventoryEntry.COLUMN_NAME_PRODUCT);
+        if (nameProduct == null) {
+            throw new IllegalArgumentException("Product requires a name.");
+        }
+
+        // Check that the name of supplier is not null.
+        String nameSupplier = values.getAsString(InventoryEntry.COLUMN_NAME_SUPPLIER);
+        if (nameSupplier == null) {
+            throw new IllegalArgumentException("Supplier name can not be empty.");
+        }
 
         // Get writable access to the database
         SQLiteDatabase database = mDatabaseHelper.getWritableDatabase();

@@ -5,29 +5,32 @@
     android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/product_image_iv"
         android:layout_width="match_parent"
-        android:layout_height="320dp"
-        android:src="@drawable/default_img"
-        android:background="@color/colorPrimary"/>
+        android:layout_height="@dimen/img_height_320"
+        android:background="@color/colorPrimary"
+        android:contentDescription="@string/cd_product_image"
+        android:src="@drawable/default_img" />
 
     <LinearLayout
         android:id="@+id/layout_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp">
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginLeft="@dimen/margin_24"
+        android:layout_marginEnd="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_24"
+        android:layout_marginBottom="@dimen/margin_24">
 
         <TextView
+            android:id="@+id/delete_tv"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:text="@string/delete"
+            android:textColor="@color/colorPrimary" />
 
         <View
             android:layout_width="0dp"
@@ -36,11 +39,11 @@
 
         <TextView
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:text="@string/save"
+            android:textColor="@color/colorPrimary" />
 
         <View
             android:layout_width="0dp"
@@ -48,67 +51,78 @@
             android:layout_weight="0.1" />
 
         <TextView
+            android:id="@+id/dial_tv"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dial"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:text="@string/dial"
+            android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/layout_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_above="@id/layout_text">
+        android:layout_above="@id/layout_text"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginLeft="@dimen/margin_24"
+        android:layout_marginEnd="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_24">
 
-        <Button
+        <ImageView
+            android:id="@+id/delete_inventory_iv"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete"
+            android:background="@drawable/bkg_round_all"
+            android:contentDescription="@string/description"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/padding_4"
+            android:src="@drawable/ic_action_delete" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="0.1" />
 
-        <Button
+        <ImageView
+            android:id="@+id/save_inventory_iv"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
+            android:background="@drawable/bkg_round_all"
+            android:contentDescription="@string/description"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/padding_4"
+            android:src="@drawable/ic_action_done" />
 
         <View
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="0.1" />
 
-        <Button
+        <ImageView
+            android:id="@+id/dial_supplier_iv"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dial"
+            android:background="@drawable/bkg_round_all"
+            android:contentDescription="@string/description"
             android:gravity="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/padding_4"
+            android:src="@drawable/ic_action_dial"
+            android:text="@string/dial" />
     </LinearLayout>
 
     <include
-        android:layout_above="@id/layout_buttons"
+        layout="@layout/content_editor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginBottom="24dp"
-        layout="@layout/content_editor" />
+        android:layout_above="@id/layout_buttons"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginLeft="@dimen/margin_24"
+        android:layout_marginEnd="@dimen/margin_24"
+        android:layout_marginRight="@dimen/margin_24"
+        android:layout_marginBottom="@dimen/margin_24" />
 </RelativeLayout>

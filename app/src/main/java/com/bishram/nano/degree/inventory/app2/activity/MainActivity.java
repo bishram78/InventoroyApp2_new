@@ -154,11 +154,11 @@ public class MainActivity extends AppCompatActivity implements
         String productName = "Product_" + random.nextInt(5000 - 1000);
         double productPriceDouble = random.nextInt(50000 - 1000)/10.0;
         String productPriceStr = String.format("%.2f", productPriceDouble);
-        int productQuantity = random.nextInt(1000 - 10);
-        int productSold = random.nextInt(100 - 1);
+        int productQuantity = random.nextInt(50 - 1);
+        int productSold = random.nextInt(10 - 1);
         String supplierName = "Supplier_" + random.nextInt(100 - 1);
         String supplierEmail = "abc." + random.nextInt(999 - 100) + "@email.com";
-        long mobileNumber = random.nextInt(70000 - 10000) * 13;
+        long mobileNumber = random.nextInt(1234567890 - 1000000000);
 
         /*
          * Create a ContentValues object where column names are the keys,
@@ -197,9 +197,9 @@ public class MainActivity extends AppCompatActivity implements
         int rowsDeleted = getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
 
         if (rowsDeleted != 0) {
-            Toast.makeText(this, getString(R.string.error_deletion), Toast.LENGTH_LONG).show();
-        } else {
             Toast.makeText(this, getString(R.string.successful_deletion), Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, getString(R.string.error_deletion), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -212,7 +212,9 @@ public class MainActivity extends AppCompatActivity implements
           InventoryEntry.COLUMN_NAME_PRODUCT,
           InventoryEntry.COLUMN_PRICE_PRODUCT,
           InventoryEntry.COLUMN_QUANTITY_PRODUCT,
-          InventoryEntry.COLUMN_SOLD_PRODUCT
+          InventoryEntry.COLUMN_SOLD_PRODUCT,
+          InventoryEntry.COLUMN_NAME_SUPPLIER,
+          InventoryEntry.COLUMN_MOBILE_SUPPLIER
         };
 
         // This loader will execute the ContentProvider's query method on a background thread

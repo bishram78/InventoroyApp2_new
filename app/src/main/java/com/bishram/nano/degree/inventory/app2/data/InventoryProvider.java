@@ -466,12 +466,6 @@ public class InventoryProvider extends ContentProvider {
             throw new IllegalArgumentException("Supplier name can not be empty.");
         }
 
-        // Check that mobile number is valid
-        long mobileNumber = values.getAsLong(InventoryEntry.COLUMN_MOBILE_SUPPLIER);
-        if (mobileNumber != 10) {
-            throw new IllegalArgumentException("Mobile number is not valid");
-        }
-
         // If there are no values to update, then don't try to update the database
         if (values.size() == 0) {
             return 0;

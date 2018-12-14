@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bishram.nano.degree.inventory.app2.R;
 
@@ -57,17 +56,19 @@ public class InventoryCursorAdapter extends CursorAdapter {
         // Find individual views that we want to modify in the list item layout
         TextView nameTexView = view.findViewById(R.id.product_name_tv);
         TextView priceTextView = view.findViewById(R.id.product_price_tv);
-        TextView quantityTextView = view.findViewById(R.id.product_quantity_tv);
-        Button buttonSellProduct = view.findViewById(R.id.product_sell_btn);
+        final TextView quantityTextView = view.findViewById(R.id.product_quantity_tv);
+        final Button buttonSellProduct = view.findViewById(R.id.product_sell_btn);
 
         // Find the columns of inventory attributes that we're interested in
         final int nameColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_NAME_PRODUCT);
         final int priceColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRICE_PRODUCT);
         final int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_QUANTITY_PRODUCT);
         final int soldColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_SOLD_PRODUCT);
+        final int supplierColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_NAME_SUPPLIER);
 
         // Read the inventory attributes from the Cursor for the current inventory.
-        String productName = cursor.getString(nameColumnIndex);
+        final String productName = cursor.getString(nameColumnIndex);
+        final String supplierName = cursor.getString(supplierColumnIndex);
         String productPrice = "INR " + cursor.getString(priceColumnIndex);
         String productQuantity = cursor.getString(quantityColumnIndex);
         String productSold = cursor.getString(soldColumnIndex);
@@ -90,6 +91,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
                 int curQuantity = quantity;
                 int curSold = sold;
                 if (quantity > 0) {
+                    values.put(InventoryEntry.COLUMN_NAME_PRODUCT, productName);
+                    values.put(InventoryEntry.COLUMN_NAME_SUPPLIER, supplierName);
                     values.put(InventoryEntry.COLUMN_QUANTITY_PRODUCT, --curQuantity);
                     values.put(InventoryEntry.COLUMN_SOLD_PRODUCT, ++curSold);
                     resolver.update(
@@ -100,7 +103,8 @@ public class InventoryCursorAdapter extends CursorAdapter {
                     );
                     context.getContentResolver().notifyChange(currentUri, null);
                 } else {
-                    Toast.makeText(context, "Item out of stock.", Toast.LENGTH_SHORT).show();
+                    buttonSellProduct.setVisibility(View.INVISIBLE);
+                    quantityTextView.setText("Out of stock.");
                 }
             }
         });

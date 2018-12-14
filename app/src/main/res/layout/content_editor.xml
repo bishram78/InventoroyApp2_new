@@ -26,7 +26,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="@string/name_of_the_product"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords" />
     </LinearLayout>
 
     <View
@@ -163,7 +163,7 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:hint="@string/name_of_the_supplier"
-            android:inputType="textPersonName" />
+            android:inputType="textCapWords" />
     </LinearLayout>
 
     <View

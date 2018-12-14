@@ -47,6 +47,8 @@ public class EditorActivity extends AppCompatActivity implements
     private TextView mDeleteTextView;
     private TextView mDialTextView;
 
+    private String stringMobile;
+
     private boolean mInventoryHasChanged = false;
 
     private View.OnTouchListener mTouchListener = new View.OnTouchListener() {
@@ -255,7 +257,22 @@ public class EditorActivity extends AppCompatActivity implements
     }
 
     private void dialSupplier() {
-        Toast.makeText(this, "Call failed", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, "Dialing " + stringMobile, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("tel:" + stringMobile));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+//
+//        Intent callIntent = new Intent(Intent.ACTION_CALL);
+//        callIntent.setData(Uri.parse("tel:" + stringMobile));
+//
+//        if (ActivityCompat.checkSelfPermission(EditorActivity.this,
+//                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//            return;
+//        }
+//        startActivity(callIntent);
     }
 
     private void additionOne() {
@@ -421,7 +438,7 @@ public class EditorActivity extends AppCompatActivity implements
             String stringSold = cursor.getString(soldColumnIndex);
             String stringSupplier = cursor.getString(supplierColumnIndex);
             String stringEmail = cursor.getString(emailColumnIndex);
-            String stringMobile = cursor.getString(mobileColumnIndex);
+            stringMobile = cursor.getString(mobileColumnIndex);
 
             mNameEditText.setText(stringName);
             mPriceEditText.setText(stringPrice);

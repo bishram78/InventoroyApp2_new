@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/delete"
-                android:textColor="#dc9710ff" />
+                android:textColor="@color/text_color_violet" />
 
             <View
                 android:layout_width="0dp"
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/save"
-                android:textColor="#dc9710ff" />
+                android:textColor="@color/text_color_violet" />
 
             <View
                 android:layout_width="0dp"
@@ -61,7 +61,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/dial"
-                android:textColor="#dc9710ff" />
+                android:textColor="@color/text_color_violet" />
         </LinearLayout>
 
         <LinearLayout

@@ -1,6 +1,5 @@
 package com.bishram.nano.degree.inventory.app2.activity;
 
-import android.Manifest;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -8,12 +7,10 @@ import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -258,14 +255,7 @@ public class EditorActivity extends AppCompatActivity implements
     }
 
     private void dialSupplier() {
-        Intent callIntent = new Intent(Intent.ACTION_CALL);
-        callIntent.setData(Uri.parse("tel:03456780"));
-
-        if (ActivityCompat.checkSelfPermission(EditorActivity.this,
-                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        startActivity(callIntent);
+        Toast.makeText(this, "Call failed", Toast.LENGTH_SHORT).show();
     }
 
     private void additionOne() {

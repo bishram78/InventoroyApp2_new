@@ -1,128 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/product_image_iv"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/img_height_320"
-        android:background="@color/colorPrimary"
-        android:contentDescription="@string/cd_product_image"
-        android:src="@drawable/default_img" />
-
-    <LinearLayout
-        android:id="@+id/layout_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginLeft="@dimen/margin_24"
-        android:layout_marginEnd="@dimen/margin_24"
-        android:layout_marginRight="@dimen/margin_24"
-        android:layout_marginBottom="@dimen/margin_24">
-
-        <TextView
-            android:id="@+id/delete_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/delete"
-            android:textColor="@color/colorPrimary" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/save"
-            android:textColor="@color/colorPrimary" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.1" />
-
-        <TextView
-            android:id="@+id/dial_tv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/dial"
-            android:textColor="@color/colorPrimary" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_buttons"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/layout_text"
-        android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginLeft="@dimen/margin_24"
-        android:layout_marginEnd="@dimen/margin_24"
-        android:layout_marginRight="@dimen/margin_24">
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/delete_inventory_iv"
-            android:layout_width="0dp"
+            android:id="@+id/product_image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/img_height_320"
+            android:background="@color/colorPrimary"
+            android:contentDescription="@string/cd_product_image"
+            android:src="@drawable/default_img" />
+
+        <LinearLayout
+            android:id="@+id/layout_text"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bkg_round_all"
-            android:contentDescription="@string/description"
-            android:gravity="center"
-            android:padding="@dimen/padding_4"
-            android:src="@drawable/ic_action_delete" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginLeft="@dimen/margin_24"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginRight="@dimen/margin_24"
+            android:layout_marginBottom="@dimen/margin_24">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.1" />
+            <TextView
+                android:id="@+id/delete_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/delete"
+                android:textColor="#dc9710ff" />
 
-        <ImageView
-            android:id="@+id/save_inventory_iv"
-            android:layout_width="0dp"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/save"
+                android:textColor="#dc9710ff" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+
+            <TextView
+                android:id="@+id/dial_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/dial"
+                android:textColor="#dc9710ff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_buttons"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bkg_round_all"
-            android:contentDescription="@string/description"
-            android:gravity="center"
-            android:padding="@dimen/padding_4"
-            android:src="@drawable/ic_action_done" />
+            android:layout_above="@id/layout_text"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginLeft="@dimen/margin_24"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginRight="@dimen/margin_24">
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="0.1" />
+            <ImageView
+                android:id="@+id/delete_inventory_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bkg_round_all"
+                android:contentDescription="@string/description"
+                android:gravity="center"
+                android:padding="@dimen/padding_4"
+                android:src="@drawable/ic_action_delete" />
 
-        <ImageView
-            android:id="@+id/dial_supplier_iv"
-            android:layout_width="0dp"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+
+            <ImageView
+                android:id="@+id/save_inventory_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bkg_round_all"
+                android:contentDescription="@string/description"
+                android:gravity="center"
+                android:padding="@dimen/padding_4"
+                android:src="@drawable/ic_action_done" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+
+            <ImageView
+                android:id="@+id/dial_supplier_iv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/bkg_round_all"
+                android:contentDescription="@string/description"
+                android:gravity="center"
+                android:padding="@dimen/padding_4"
+                android:src="@drawable/ic_action_dial"
+                android:text="@string/dial" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/content_editor"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bkg_round_all"
-            android:contentDescription="@string/description"
-            android:gravity="center"
-            android:padding="@dimen/padding_4"
-            android:src="@drawable/ic_action_dial"
-            android:text="@string/dial" />
-    </LinearLayout>
-
-    <include
-        layout="@layout/content_editor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/layout_buttons"
-        android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginLeft="@dimen/margin_24"
-        android:layout_marginEnd="@dimen/margin_24"
-        android:layout_marginRight="@dimen/margin_24"
-        android:layout_marginBottom="@dimen/margin_24" />
-</RelativeLayout>
+            android:layout_above="@id/layout_buttons"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginLeft="@dimen/margin_24"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_marginRight="@dimen/margin_24"
+            android:layout_marginBottom="@dimen/margin_24" />
+    </RelativeLayout>
+</ScrollView>

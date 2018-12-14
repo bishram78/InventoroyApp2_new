@@ -1,0 +1,30 @@
+<resources>
+    <!-- Name of the project. -->
+    <string name="app_name">InventoryApp2</string>
+
+    <!-- Title of the main activity. -->
+    <string name="main_activity_title">Inventory Store v2.0</string>
+
+    <!-- Drop down menu options for the MainActivity. -->
+    <string name="insert_dummy_product">Insert Dummy Product</string>
+    <string name="delete_all_data">Delete All Data</string>
+    <string name="exit_app">Exit App</string>
+
+    <!-- Text that tells that inserting has failed. -->
+    <string name="error_insertion">Sorry, something went wrong.\nUnable to insert the provided data to database.</string>
+
+    <!-- Text that tells that inserting has successfully carried out. -->
+    <string name="successful_insertion">Data has inserted successfully.</string>
+
+    <!-- Text that tells that has failed. -->
+    <string name="error_deletion">Sorry, something went wrong.\nNothing deleted.</string>
+
+    <!-- Text that tells that deletion has successfully carried out. -->
+    <string name="successful_deletion">All data has successfully deleted.</string>
+
+    <!-- Title text for the empty view, which describes the empty inventory [CHAR LIMIT=50] -->
+    <string name="empty_view_title_text">It\'s a bit lonely here…</string>
+
+    <!-- Subtitle text for the empty view that prompts the user to add an inventory [CHAR LIMIT=50] -->
+    <string name="empty_view_subtitle_text">Get started by adding a product</string>
+</resources>

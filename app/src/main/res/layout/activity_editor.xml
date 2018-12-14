@@ -37,6 +37,7 @@
                 android:textColor="@color/text_color_violet" />
 
             <View
+                android:id="@+id/view_2"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="0.1" />
@@ -47,20 +48,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/save"
-                android:textColor="@color/text_color_violet" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="0.1" />
-
-            <TextView
-                android:id="@+id/dial_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/dial"
                 android:textColor="@color/text_color_violet" />
         </LinearLayout>
 
@@ -82,10 +69,11 @@
                 android:background="@drawable/bkg_round_all"
                 android:contentDescription="@string/description"
                 android:gravity="center"
-                android:padding="@dimen/padding_4"
+                android:padding="@dimen/padding_8"
                 android:src="@drawable/ic_action_delete" />
 
             <View
+                android:id="@+id/view_1"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="0.1" />
@@ -98,25 +86,8 @@
                 android:background="@drawable/bkg_round_all"
                 android:contentDescription="@string/description"
                 android:gravity="center"
-                android:padding="@dimen/padding_4"
+                android:padding="@dimen/padding_8"
                 android:src="@drawable/ic_action_done" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="0.1" />
-
-            <ImageView
-                android:id="@+id/dial_supplier_iv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/bkg_round_all"
-                android:contentDescription="@string/description"
-                android:gravity="center"
-                android:padding="@dimen/padding_4"
-                android:src="@drawable/ic_action_dial"
-                android:text="@string/dial" />
         </LinearLayout>
 
         <include

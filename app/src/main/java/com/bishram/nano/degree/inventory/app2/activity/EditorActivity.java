@@ -41,13 +41,11 @@ public class EditorActivity extends AppCompatActivity implements
     private EditText mMobileEditText;
     private ImageView mSaveButton;
     private ImageView mDeleteButton;
-    private ImageView mDialButton;
     private ImageView mSellIncrease;
     private ImageView mSellDecrease;
     private TextView mDeleteTextView;
-    private TextView mDialTextView;
-
-    private String stringMobile;
+    private View view1;
+    private View view2;
 
     private boolean mInventoryHasChanged = false;
 
@@ -86,11 +84,11 @@ public class EditorActivity extends AppCompatActivity implements
         mMobileEditText = findViewById(R.id.supplier_mobile_et);
         mSaveButton = findViewById(R.id.save_inventory_iv);
         mDeleteButton = findViewById(R.id.delete_inventory_iv);
-        mDialButton = findViewById(R.id.dial_supplier_iv);
         mSellIncrease = findViewById(R.id.product_sold_inc_iv);
         mSellDecrease = findViewById(R.id.product_sold_dec_iv);
         mDeleteTextView = findViewById(R.id.delete_tv);
-        mDialTextView = findViewById(R.id.dial_tv);
+        view1 = findViewById(R.id.view_1);
+        view2 = findViewById(R.id.view_2);
 
         mNameEditText.setOnTouchListener(mTouchListener);
         mPriceEditText.setOnTouchListener(mTouchListener);
@@ -102,10 +100,10 @@ public class EditorActivity extends AppCompatActivity implements
 
         if (mCurrentInventoryUri == null) {
             setTitle(R.string.add_new_product);
-            mDeleteButton.setVisibility(View.INVISIBLE);
-            mDeleteTextView.setVisibility(View.INVISIBLE);
-            mDialTextView.setVisibility(View.INVISIBLE);
-            mDialButton.setVisibility(View.INVISIBLE);
+            mDeleteButton.setVisibility(View.GONE);
+            mDeleteTextView.setVisibility(View.GONE);
+            view1.setVisibility(View.GONE);
+            view2.setVisibility(View.GONE);
         } else {
             setTitle(R.string.edit_product_info);
             getLoaderManager().initLoader(EXISTING_INVENTORY_LOADER, null, this);
@@ -138,13 +136,6 @@ public class EditorActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 deleteProduct();
-            }
-        });
-
-        mDialButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialSupplier();
             }
         });
     }
@@ -254,25 +245,6 @@ public class EditorActivity extends AppCompatActivity implements
         }
 
         finish();
-    }
-
-    private void dialSupplier() {
-
-        Toast.makeText(this, "Dialing " + stringMobile, Toast.LENGTH_SHORT).show();
-
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("tel:" + stringMobile));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-//
-//        Intent callIntent = new Intent(Intent.ACTION_CALL);
-//        callIntent.setData(Uri.parse("tel:" + stringMobile));
-//
-//        if (ActivityCompat.checkSelfPermission(EditorActivity.this,
-//                Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//            return;
-//        }
-//        startActivity(callIntent);
     }
 
     private void additionOne() {
@@ -438,7 +410,7 @@ public class EditorActivity extends AppCompatActivity implements
             String stringSold = cursor.getString(soldColumnIndex);
             String stringSupplier = cursor.getString(supplierColumnIndex);
             String stringEmail = cursor.getString(emailColumnIndex);
-            stringMobile = cursor.getString(mobileColumnIndex);
+            String stringMobile = cursor.getString(mobileColumnIndex);
 
             mNameEditText.setText(stringName);
             mPriceEditText.setText(stringPrice);

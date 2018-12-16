@@ -164,13 +164,13 @@ public class MainActivity extends AppCompatActivity implements
     private void insetInventory() {
 
         Random random = new Random();
-        String productName = "Product_" + random.nextInt(5000 - 1000);
+        String productName = getString(R.string.product) + random.nextInt(5000 - 1000);
         double productPriceDouble = random.nextInt(50000 - 1000)/10.0;
         @SuppressLint("DefaultLocale") String productPriceStr = String.format("%.2f", productPriceDouble);
         int productQuantity = random.nextInt(50 - 1);
         int productSold = random.nextInt(10 - 1);
-        String supplierName = "Supplier_" + random.nextInt(100 - 1);
-        String supplierEmail = "abc." + random.nextInt(999 - 100) + "@email.com";
+        String supplierName = getString(R.string.supplier) + random.nextInt(100 - 1);
+        String supplierEmail = getString(R.string.abc_dot) + random.nextInt(999 - 100) + getString(R.string.at_email);
         long mobileNumber = random.nextInt(1234567890 - 1000000000);
 
         /*

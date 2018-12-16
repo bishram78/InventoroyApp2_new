@@ -165,7 +165,7 @@ public class InventoryProvider extends ContentProvider {
         switch (match) {
             case INVENTORY:
                 /*
-                 * For the INVENTORY code, query the pets table directly with the given
+                 * For the INVENTORY code, query the inventorys table directly with the given
                  * projection, selection, selection arguments and sort order. The
                  * cursor could contain multiple rows of the inventory table.
                  */
@@ -193,7 +193,7 @@ public class InventoryProvider extends ContentProvider {
                 };
 
                 /*
-                 * This will perform a query on the pets table where the _ID returns
+                 * This will perform a query on the inventorys table where the _ID returns
                  * a Cursor containing that row of the table.
                  */
                 cursor = database.query(

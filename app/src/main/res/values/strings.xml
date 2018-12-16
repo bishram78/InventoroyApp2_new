@@ -52,13 +52,22 @@
     <string name="add_new_product">Add New Product</string>
     <string name="edit_product_info">Edit Product Info</string>
 
-    <string name="unsaved_changes_dialog_msg">You have unsave information are you sure you want to go back?</string>
+    <string name="unsaved_changes_dialog_msg">You have unsaved information are you sure you want to go back?</string>
     <string name="discard">Discard and leave</string>
     <string name="keep_editing">Lets finish this</string>
 
-    <!-- Dialog message to ask the user to confirm deleting the current pet [CHAR LIMIT=NONE] -->
-    <string name="delete_dialog_msg">Delete this pet?</string>
+    <!-- Dialog message to ask the user to confirm deleting the current product [CHAR LIMIT=NONE] -->
+    <string name="delete_dialog_msg">Delete this product?</string>
 
-    <!-- Dialog button text for the option to cancel deletion of the current pet [CHAR LIMIT=20] -->
+    <!-- Dialog button text for the option to cancel deletion of the current product [CHAR LIMIT=20] -->
     <string name="cancel">Cancel</string>
+    <string name="sell">Sell</string>
+    <string name="product">Product_</string>
+    <string name="supplier">Supplier_</string>
+    <string name="abc_dot">abc.</string>
+    <string name="at_email">\@email.com</string>
+
+    <string name="error_find_number">No number found.</string>
+    <string name="invalid_number">Invalid number.</string>
+    <string name="sold_out">Sold all product out.</string>
 </resources>

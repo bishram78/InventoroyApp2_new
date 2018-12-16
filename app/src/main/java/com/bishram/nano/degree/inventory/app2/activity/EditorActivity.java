@@ -1,6 +1,7 @@
 package com.bishram.nano.degree.inventory.app2.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -45,16 +46,6 @@ public class EditorActivity extends AppCompatActivity implements
     private EditText mSupplierEditText;
     private EditText mEmailEditText;
     private EditText mMobileEditText;
-    private ImageView mSaveButton;
-    private ImageView mDeleteButton;
-    private ImageView mDialButton;
-    private ImageView mSellIncrease;
-    private ImageView mSellDecrease;
-    private TextView mDeleteTextView;
-    private View view1;
-    private View view2;
-    private View view3;
-    private View view4;
 
     private boolean mInventoryHasChanged = false;
 
@@ -68,6 +59,7 @@ public class EditorActivity extends AppCompatActivity implements
          *              the event.
          * @return True if the listener has consumed the event, false otherwise.
          */
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             mInventoryHasChanged = true;
@@ -75,6 +67,7 @@ public class EditorActivity extends AppCompatActivity implements
         }
     };
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,16 +84,13 @@ public class EditorActivity extends AppCompatActivity implements
         mSupplierEditText = findViewById(R.id.supplier_name_et);
         mEmailEditText = findViewById(R.id.supplier_email_et);
         mMobileEditText = findViewById(R.id.supplier_mobile_et);
-        mSaveButton = findViewById(R.id.save_inventory_iv);
-        mDeleteButton = findViewById(R.id.delete_inventory_iv);
-        mDialButton = findViewById(R.id.dial_inventory_iv);
-        mSellIncrease = findViewById(R.id.product_sold_inc_iv);
-        mSellDecrease = findViewById(R.id.product_sold_dec_iv);
-        mDeleteTextView = findViewById(R.id.delete_tv);
-        view1 = findViewById(R.id.view_1_iv);
-        view2 = findViewById(R.id.view_2_iv);
-        view3 = findViewById(R.id.view_1_tv);
-        view4 = findViewById(R.id.view_2_tv);
+        ImageView mSaveButton = findViewById(R.id.save_inventory_iv);
+        ImageView mDeleteButton = findViewById(R.id.delete_inventory_iv);
+        ImageView mDialButton = findViewById(R.id.dial_inventory_iv);
+        ImageView mSellIncrease = findViewById(R.id.product_sold_inc_iv);
+        ImageView mSellDecrease = findViewById(R.id.product_sold_dec_iv);
+        TextView mDeleteTextView = findViewById(R.id.delete_tv);
+        TextView mDialTextView = findViewById(R.id.dial_tv);
 
         mNameEditText.setOnTouchListener(mTouchListener);
         mPriceEditText.setOnTouchListener(mTouchListener);
@@ -114,8 +104,8 @@ public class EditorActivity extends AppCompatActivity implements
             setTitle(R.string.add_new_product);
             mDeleteButton.setVisibility(View.INVISIBLE);
             mDeleteTextView.setVisibility(View.INVISIBLE);
-            view1.setVisibility(View.GONE);
-            view2.setVisibility(View.GONE);
+            mDialButton.setVisibility(View.INVISIBLE);
+            mDialTextView.setVisibility(View.INVISIBLE);
         } else {
             setTitle(R.string.edit_product_info);
             getLoaderManager().initLoader(EXISTING_INVENTORY_LOADER, null, this);
@@ -133,7 +123,7 @@ public class EditorActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 additionOne();
-                mInventoryHasChanged =  true;
+                mInventoryHasChanged = true;
             }
         });
 
@@ -178,7 +168,7 @@ public class EditorActivity extends AppCompatActivity implements
                 TextUtils.isEmpty(supplierString) &&
                 TextUtils.isEmpty(emailString) &&
                 TextUtils.isEmpty(mobileString)) {
-            return;
+            Toast.makeText(this, "One or more fields are empty!", Toast.LENGTH_SHORT).show();
         } else if (TextUtils.isEmpty(nameString) ||
                 TextUtils.isEmpty(priceString) ||
                 TextUtils.isEmpty(quantityString) ||
@@ -229,14 +219,12 @@ public class EditorActivity extends AppCompatActivity implements
     private boolean validationCheck() {
         try {
             if (stringMobile.equalsIgnoreCase(" ")) {
-                mMobileEditText.setText("Empty mobile text");
-                mMobileEditText.requestFocus();
+                Toast.makeText(getApplicationContext(), getString(R.string.error_find_number), Toast.LENGTH_SHORT).show();
                 return false;
             }
 
             if (stringMobile.length() < 6 || stringMobile.length() > 13) {
-                mMobileEditText.setText("Invalid phone number!");
-                mMobileEditText.requestFocus();
+                Toast.makeText(getApplicationContext(), getString(R.string.invalid_number), Toast.LENGTH_SHORT).show();
                 return false;
             }
         } catch (Exception ex) {
@@ -270,7 +258,7 @@ public class EditorActivity extends AppCompatActivity implements
     }
 
     /**
-     * Prompt the user to confirm that they want to delete this pet.
+     * Prompt the user to confirm that they want to delete this inventory.
      */
     private void showDeleteConfirmationDialog() {
         // Create an AlertDialog.Builder and set the message, and click listeners
@@ -279,14 +267,14 @@ public class EditorActivity extends AppCompatActivity implements
         builder.setMessage(R.string.delete_dialog_msg);
         builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                // User clicked the "Delete" button, so delete the pet.
+                // User clicked the "Delete" button, so delete the inventory.
                 deleteCurrentProduct();
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked the "Cancel" button, so dismiss the dialog
-                // and continue editing the pet.
+                // and continue editing the inventory.
                 if (dialog != null) {
                     dialog.dismiss();
                 }
@@ -326,17 +314,14 @@ public class EditorActivity extends AppCompatActivity implements
     }
 
     private void subtractOne() {
-         String previousValueString = mSoldEditText.getText().toString();
-         int previousValue;
-         if (previousValueString.isEmpty()) {
-             return;
-         } else if (previousValueString.equals("0")) {
-             return;
-         } else {
-             previousValue = Integer.parseInt(previousValueString);
-             mSoldEditText.setText(String.valueOf(previousValue - 1));
-         }
-     }
+        String previousValueString = mSoldEditText.getText().toString();
+        int previousValue;
+
+        if (!previousValueString.isEmpty() && !previousValueString.equals("0")) {
+            previousValue = Integer.parseInt(previousValueString);
+            mSoldEditText.setText(String.valueOf(previousValue - 1));
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -454,7 +439,7 @@ public class EditorActivity extends AppCompatActivity implements
      * </ul>
      *
      * @param loader The Loader that has finished.
-     * @param cursor   The data generated by the Loader.
+     * @param cursor The data generated by the Loader.
      */
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {

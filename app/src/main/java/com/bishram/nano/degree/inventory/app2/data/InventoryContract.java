@@ -32,7 +32,7 @@ public final class InventoryContract {
     /**
      * Possible path (appended to base content URI for possible URI's)
      * For instance, content://package com.bishram.nano.degree.inventory.app2/inventory
-     * is a valid path for looking at pet data.
+     * is a valid path for looking at inventory data.
      * content://package com.bishram.nano.degree.inventory.app2/staff will fail, as
      * the ContentProvider hasn't been given any information on what to do with
      * "staff".

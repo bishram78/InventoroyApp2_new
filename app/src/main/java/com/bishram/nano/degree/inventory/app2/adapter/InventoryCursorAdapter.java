@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,18 @@ public class InventoryCursorAdapter extends CursorAdapter {
         priceTextView.setText(productPrice);
         quantityTextView.setText(productQuantityStr);
 
+        if (Integer.parseInt(productQuantity) != 0) {
+            buttonSellProduct.setEnabled(true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                buttonSellProduct.setBackground(context.getDrawable(R.drawable.bkg_round_all));
+            }
+        } else {
+            buttonSellProduct.setEnabled(false);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                buttonSellProduct.setBackground(context.getDrawable(R.drawable.bkg_round_all_disable));
+            }
+        }
+
         final long id = cursor.getLong(cursor.getColumnIndex(InventoryEntry._ID));
         final Uri currentUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
         final int quantity = Integer.parseInt(productQuantity);
@@ -104,8 +117,15 @@ public class InventoryCursorAdapter extends CursorAdapter {
                     );
                     context.getContentResolver().notifyChange(currentUri, null);
                 } else {
-                    Toast.makeText(context, "Out of stock", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (quantity <= 1) {
+                    Toast.makeText(context, context.getString(R.string.sold_out), Toast.LENGTH_SHORT).show();
                     buttonSellProduct.setEnabled(false);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        buttonSellProduct.setBackground(context.getDrawable(R.drawable.bkg_round_all_disable));
+                    }
                 }
             }
         });

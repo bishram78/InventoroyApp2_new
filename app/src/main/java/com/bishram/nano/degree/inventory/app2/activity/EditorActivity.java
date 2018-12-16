@@ -1,5 +1,6 @@
 package com.bishram.nano.degree.inventory.app2.activity;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -7,10 +8,13 @@ import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -30,7 +34,9 @@ public class EditorActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int EXISTING_INVENTORY_LOADER = 0;
+    private static final int CALL_REQUEST = 100;
     private Uri mCurrentInventoryUri;
+    private String stringMobile;
 
     private EditText mNameEditText;
     private EditText mPriceEditText;
@@ -41,11 +47,14 @@ public class EditorActivity extends AppCompatActivity implements
     private EditText mMobileEditText;
     private ImageView mSaveButton;
     private ImageView mDeleteButton;
+    private ImageView mDialButton;
     private ImageView mSellIncrease;
     private ImageView mSellDecrease;
     private TextView mDeleteTextView;
     private View view1;
     private View view2;
+    private View view3;
+    private View view4;
 
     private boolean mInventoryHasChanged = false;
 
@@ -84,11 +93,14 @@ public class EditorActivity extends AppCompatActivity implements
         mMobileEditText = findViewById(R.id.supplier_mobile_et);
         mSaveButton = findViewById(R.id.save_inventory_iv);
         mDeleteButton = findViewById(R.id.delete_inventory_iv);
+        mDialButton = findViewById(R.id.dial_inventory_iv);
         mSellIncrease = findViewById(R.id.product_sold_inc_iv);
         mSellDecrease = findViewById(R.id.product_sold_dec_iv);
         mDeleteTextView = findViewById(R.id.delete_tv);
-        view1 = findViewById(R.id.view_1);
-        view2 = findViewById(R.id.view_2);
+        view1 = findViewById(R.id.view_1_iv);
+        view2 = findViewById(R.id.view_2_iv);
+        view3 = findViewById(R.id.view_1_tv);
+        view4 = findViewById(R.id.view_2_tv);
 
         mNameEditText.setOnTouchListener(mTouchListener);
         mPriceEditText.setOnTouchListener(mTouchListener);
@@ -100,8 +112,8 @@ public class EditorActivity extends AppCompatActivity implements
 
         if (mCurrentInventoryUri == null) {
             setTitle(R.string.add_new_product);
-            mDeleteButton.setVisibility(View.GONE);
-            mDeleteTextView.setVisibility(View.GONE);
+            mDeleteButton.setVisibility(View.INVISIBLE);
+            mDeleteTextView.setVisibility(View.INVISIBLE);
             view1.setVisibility(View.GONE);
             view2.setVisibility(View.GONE);
         } else {
@@ -136,6 +148,15 @@ public class EditorActivity extends AppCompatActivity implements
             @Override
             public void onClick(View v) {
                 deleteProduct();
+            }
+        });
+
+        mDialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validationCheck()) {
+                    dialSupplier();
+                }
             }
         });
     }
@@ -200,6 +221,52 @@ public class EditorActivity extends AppCompatActivity implements
 
     private void deleteProduct() {
         showDeleteConfirmationDialog();
+    }
+
+    /**
+     * This method checks for the validation;
+     */
+    private boolean validationCheck() {
+        try {
+            if (stringMobile.equalsIgnoreCase(" ")) {
+                mMobileEditText.setText("Empty mobile text");
+                mMobileEditText.requestFocus();
+                return false;
+            }
+
+            if (stringMobile.length() < 6 || stringMobile.length() > 13) {
+                mMobileEditText.setText("Invalid phone number!");
+                mMobileEditText.requestFocus();
+                return false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return true;
+    }
+
+    /**
+     * This method is responsible for making call and also
+     * checks run time permission for CALL_PHONE
+     */
+    public void dialSupplier() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(EditorActivity.this, new String[]{
+                            Manifest.permission.CALL_PHONE
+                    }, CALL_REQUEST);
+                    return;
+                }
+            }
+
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + stringMobile));
+            startActivity(intent);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -410,7 +477,7 @@ public class EditorActivity extends AppCompatActivity implements
             String stringSold = cursor.getString(soldColumnIndex);
             String stringSupplier = cursor.getString(supplierColumnIndex);
             String stringEmail = cursor.getString(emailColumnIndex);
-            String stringMobile = cursor.getString(mobileColumnIndex);
+            stringMobile = cursor.getString(mobileColumnIndex);
 
             mNameEditText.setText(stringName);
             mPriceEditText.setText(stringPrice);
